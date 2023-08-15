@@ -1,8 +1,8 @@
 #include "main.h"
+
 /**
  * main - function that prints _putchar
- * is written by mbah
- * Return: 0
+ * Return: returns 0;
  */
 
 int main(void)
@@ -15,6 +15,7 @@ _putchar('c');
 _putchar('h');
 _putchar('a');
 _putchar('r');
-_putchar("\n")
+_putchar('\n');
+
 return (0);
 }
