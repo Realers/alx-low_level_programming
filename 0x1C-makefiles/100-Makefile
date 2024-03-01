@@ -1,0 +1,23 @@
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = /bin/rm -f
+CFLAGS = -Wall -Werror -Wextra -pedantic
+.PHONY: all clean oclean fclean re
+all: $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+clean:
+	$(RM) *~ $(NAME)
+oclean:
+	$(RM) $(OBJ)
+fclean: clean
+	$(RM) $(NAME)
+re: fclean all
+-include $(SRC:.c=.d)
+%.d: %.c
+	@gcc -MM $(CFLAGS) $< | sed 's,$(notdir $*).o[ :]*,$*.o $@ : ,g' > $@
+ifeq ($(wildcard m.h),)
+$(error Header file m.h not found)
+endif
